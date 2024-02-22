@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADsP 시험까지 남은 시간</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 100px;
+    }
+    #countdown {
+        color: dodgerblue;
+        font-size: 104px;
+        margin-top: 100px;
+    }
+</style>
+</head>
+<body>
+<h1>ADsP 시험까지 남은 시간</h1>
+
+<div id="countdown"></div>
+
+<script>
+    // ADsp 시험 시작 시간 (24일 오전 10시)
+    const examStartTime = new Date('2024-02-24T10:00:00');
+
+    function updateCountdown() {
+        // 현재 시간을 가져오기
+        const now = new Date();
+
+        // 시험 시작 시간까지 남은 시간 계산
+        const timeDiff = examStartTime - now;
+
+        // 시간, 분, 초 계산
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        // 시험까지 남은 시간을 문자열로 표시
+        const countdownDisplay = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
+
+        // 카운트다운 업데이트
+        document.getElementById('countdown').textContent = countdownDisplay;
+    }
+
+    // 페이지가 로드될 때마다 카운트다운 업데이트
+    updateCountdown();
+    setInterval(updateCountdown, 1000); // 1초마다 카운트다운 업데이트
+</script>
+</body>
+</html>
